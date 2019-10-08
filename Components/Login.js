@@ -1,7 +1,7 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet,KeyboardAvoidingView } from 'react-native';
-import LoginForm from './LoginForm';
+import LoginButton from './LoginButton';
 
 // create a component
 class Login extends Component {
@@ -14,7 +14,7 @@ class Login extends Component {
                   
                     </View>
                <View style={styles.formContainer}>
-                   <LoginForm />
+                   <LoginButton />
                </View>
                
          

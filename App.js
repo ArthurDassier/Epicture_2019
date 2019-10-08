@@ -6,7 +6,7 @@ import {
   View
 } from 'react-native';
 
-import Login from './Components/login';
+import Login from './Components/Login';
 
 export default class DemoLogin extends Component {
   render() {
