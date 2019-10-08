@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import { AppRegistry,StyleSheet,Text ,View} from 'react-native';
-//import Login Component 
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+
 import Login from './Components/login';
 
 export default class DemoLogin extends Component {

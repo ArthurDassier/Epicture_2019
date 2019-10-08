@@ -1,34 +1,54 @@
+//import liraries
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert, Button, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Alert, Button ,StyleSheet ,StatusBar} from 'react-native';
 
-export default class LoginForm extends Component {
+const onButtonPress = () => {
+    fetch('https://api.imgur.com/oauth2/token', {
+        method: 'POST',
+        body: JSON.stringify({
+            "access_token": "ef90055611059f6006249821a176127c061fd97c",
+            "expires_in": 315360000,
+            "token_type": "bearer",
+            "scope": "",
+            "refresh_token": "5499a9a6f7683df0d67fe96d80eb7c3dea73da0b",
+            "account_id": 115081187,
+            "account_username": "arthurdassier"
+        }),
+      }).then((response) => response.json()).then((responseJson) => {
+        return responseJson;
+      })
+};
+
+
+// create a component
+class LoginForm extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <StatusBar barStyle="light-content"/>
                 <TextInput style = {styles.input} 
-               autoCapitalize="none" 
-               onSubmitEditing={() => this.passwordInput.focus()} 
-               autoCorrect={false} 
-               keyboardType='email-address' 
-               returnKeyType="next" 
-               placeholder='Email or Mobile Num' 
-               placeholderTextColor='rgba(225,225,225,0.7)'/>
+                            autoCapitalize="none" 
+                            onSubmitEditing={() => this.passwordInput.focus()} 
+                            autoCorrect={false} 
+                            keyboardType='email-address' 
+                            returnKeyType="next" 
+                            placeholder='Email or Mobile Num' 
+                            placeholderTextColor='rgba(225,225,225,0.7)'/>
 
-                <TextInput style = {styles.input}
-                            returnKeyType="go" 
-                            ref={(input)=> this.passwordInput = input} 
-                            placeholder='Password' 
-                            placeholderTextColor='rgba(225,225,225,0.7)' 
-                            secureTextEntry/>
-
-                <TouchableOpacity style={styles.buttonContainer} 
-                                    onPress={() => Alert.alert('Simple Button pressed')}>
-                            <Text  style={styles.buttonText}>LOGIN</Text>
+                <TextInput style = {styles.input}   
+                           returnKeyType="go" ref={(input)=> this.passwordInput = input} 
+                           placeholder='Password' 
+                           placeholderTextColor='rgba(225,225,225,0.7)' 
+                           secureTextEntry/>
+                 {/*   <Button onPress={onButtonPress} title = 'Login' style={styles.loginButton} /> */}
+              <TouchableOpacity style={styles.buttonContainer} onPress={onButtonPress}>
+                    <Text  style={styles.buttonText}>LOGIN</Text>
                 </TouchableOpacity> 
             </View>
         );
     }
 }
+
 // define your styles
 const styles = StyleSheet.create({
     container: {
@@ -49,5 +69,13 @@ const styles = StyleSheet.create({
         color: '#fff',
         textAlign: 'center',
         fontWeight: '700'
+    }, 
+    loginButton:{
+      backgroundColor:  '#2980b6',
+       color: '#fff'
     }
+   
 });
+
+//make this component available to the app
+export default LoginForm;
