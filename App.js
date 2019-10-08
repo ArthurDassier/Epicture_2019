@@ -1,9 +1,14 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { AppRegistry,StyleSheet,Text ,View} from 'react-native';
+//import Login Component 
+import Login from './Components/login';
 
-import HelloWorldApp from './Components/HelloWorld';
-
-export default function App() {
-    return <HelloWorldApp/>;
+export default class DemoLogin extends Component {
+  render() {
+    return (
+     <Login />
+    );
+  }
 }
 
+AppRegistry.registerComponent('DemoLogin', () => DemoLogin);
