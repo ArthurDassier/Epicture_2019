@@ -1,40 +1,57 @@
 import React, { Component } from 'react';
-
-import { View, WebView, AsyncStorage} from 'react-native';
-
-
-class ImgurWebView extends Component {
-  constructor( props ) {
-    super( props )
-  }
-
-  render() {
-    return (
-    <View style={ { flex: 1 } }>
-      <WebView source={ { uri: `https://api.imgur.com/oauth2/authorize?client_id=${fc7cb1f5f86d0ef}&response_type=token` } }
-               startInLoadingState={ true }
-               javaScriptEnabled={ true }
-               domStorageEnabled={ true }
-               automaticallyAdjustContentInsets={ false }
-               style={ { marginTop: 20 } }
-               onNavigationStateChange={ this._onNavigationStateChange.bind( this ) } />
-    </View>
-    );
-  }
-
-  _onNavigationStateChange = async ( webViewState ) => {
-    if ( webViewState.url.startsWith( 'https://zacktrololol.io' ) ) {
-      const regex = 'access_token=([^&]+)(?:&expires=(.*))?';
-      let accessToken = webViewState.url.match( regex )[ 1 ];
-      const regexName = 'account_username=([^&]+)(?:&account_id=(.*))?';
-      let userName = webViewState.url.match( regexName )[ 1 ];
-      await AsyncStorage.setItem( 'accessToken', accessToken );
-      await AsyncStorage.setItem( 'userName', userName );
-      this.props.navigation.navigate( 'Home' );
-    }
-  }
+import { View, StyleSheet, Button, WebView } from 'react-native';
+import { Constants } from 'expo';
 
 
+export default class webView extends Component {
+
+state={
+  showWebView: false
 }
 
-export default ImgurWebView;
+onNavigationStateChange = navState => {
+   if (navState.url.indexOf('https://www.google.com') === 0) {
+   const regex = /#access_token=(.+)/;
+   const accessToken = navState.url.match(regex)[1];
+   console.log(accessToken);
+ }
+};
+
+renderContent() {
+ return (
+   <WebView
+     source={{
+       uri: '',
+    }}
+     onNavigationStateChange={this.onNavigationStateChange}
+     startInLoadingState
+     scalesPageToFit
+     javaScriptEnabled
+     style={{ flex: 1 }}
+   />
+ );
+}
+
+render() {
+ return (
+   <View style={styles.container}>
+     { this.state.showWebView && this.renderContent() }
+     <Button
+       style={styles.paragraph}
+       title="Login"
+       onPress={() => this.setState({showWebView: true})}
+     />
+   </View>
+ );
+}
+}
+
+const styles = StyleSheet.create({
+ container: {
+   flex: 1,
+   alignItems: 'center',
+   justifyContent: 'center',
+   paddingTop: Constants.statusBarHeight,
+   backgroundColor: '#ecf0f1',
+ },
+});
