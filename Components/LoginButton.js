@@ -56,8 +56,8 @@ class LoginButton extends Component {
 
 // define your styles
 const styles = StyleSheet.create({
-    container: {
-     padding: 20
+        container: {
+        padding: 20,
     },
     input:{
         height: 40,
@@ -68,7 +68,9 @@ const styles = StyleSheet.create({
     },
     buttonContainer:{
         backgroundColor: '#2980b6',
-        paddingVertical: 15
+        paddingVertical: 15,
+        width: 70,
+        top: 500
     },
     buttonText:{
         color: '#fff',
@@ -76,8 +78,8 @@ const styles = StyleSheet.create({
         fontWeight: '700'
     }, 
     loginButton:{
-      backgroundColor:  '#2980b6',
-       color: '#fff'
+        backgroundColor:  '#2980b6',
+        color: '#fff'
     }
    
 });
