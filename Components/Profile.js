@@ -7,7 +7,7 @@ class Profile extends Component {
 
     constructor(props){
         super(props);
-        this.state = {data: 'init'};
+        this.state = {data: []};
     }
 
     componentDidMount(){
@@ -30,6 +30,7 @@ class Profile extends Component {
                 <FlatList
                     showsHorizontalScrollIndicator={false}
                     data={this.state.data}
+                    keyExtractor={item => item.id}
                     renderItem={({ item }) => (
                             <Preview name={item.name} link={item.link}/>
                 )}/>
