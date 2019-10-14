@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet,KeyboardAvoidingView } from 'react-native';
+import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
+
+import Preview from './Preview.js';
 
 class Profile extends Component {
 
     constructor(props){
         super(props);
-        this.state = {link: 'init'};
+        this.state = {data: 'init'};
     }
 
     componentDidMount(){
@@ -15,8 +17,8 @@ class Profile extends Component {
           }})
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson.data[0].link);
-                this.setState({link: responseJson.data[0].link});
+                console.log(responseJson);
+                this.setState({data: responseJson.data});
             }).catch((error) => {
                 console.error(error);
             });
@@ -24,11 +26,23 @@ class Profile extends Component {
 
     render() {
         return (
-            <View>
-                <Image style={{width: 400, height: 400}} source={{uri:this.state.link}}></Image>
+            <View style={styles.container}>
+                <FlatList
+                    showsHorizontalScrollIndicator={false}
+                    data={this.state.data}
+                    renderItem={({ item }) => (
+                            <Preview name={item.name} link={item.link}/>
+                )}/>
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#2c3e50',
+    },
+});
 
 export default Profile;

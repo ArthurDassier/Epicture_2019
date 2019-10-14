@@ -38,7 +38,7 @@ class LoginButton extends Component {
         return (
             <View style={styles.container}>
               <TouchableOpacity style={styles.buttonContainer} onPress={() => this.setState({showWebView: true})}>
-                    <Text  style={styles.buttonText}>LOGIN</Text>
+                    <Text style={styles.buttonText}>LOGIN</Text>
                 </TouchableOpacity> 
             </View>
         );
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
         backgroundColor:  '#2980b6',
         color: '#fff'
     }
-   
 });
 
 export default LoginButton;

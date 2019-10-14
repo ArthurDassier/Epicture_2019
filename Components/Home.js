@@ -18,21 +18,16 @@ class Home extends Component {
     render() {
         if (this.state.isLogged == false) {
             return (
-            <KeyboardAvoidingView behavior="padding" style={styles.container}>
-
-                <View style={styles.BtContainer}>
-                        <Image resizeMode="contain" style={styles.logo} source={require('../images/wac.png')} />
-                        <LoginButton func={this._changeLog}/>
-                </View>
-                
-            
+                <KeyboardAvoidingView behavior="padding" style={styles.container}>
+                    <View style={styles.BtContainer}>
+                            <Image resizeMode="contain" style={styles.logo} source={require('../images/wac.png')} />
+                            <LoginButton func={this._changeLog}/>
+                    </View>
                 </KeyboardAvoidingView>
             );
         }
         return (
-            <View>
-                <Profile/>
-            </View>
+            <Profile/>
         )
     }
 }
