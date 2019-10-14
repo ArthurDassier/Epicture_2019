@@ -1,46 +1,37 @@
-//import liraries
 import React, { Component } from 'react';
-import { View, Text, WebView, TouchableOpacity, Alert, Button ,StyleSheet ,StatusBar} from 'react-native';
-// import { authorize } from 'react-native-app-auth';
+import { View, Text, WebView, TouchableOpacity, StyleSheet, AsyncStorage} from 'react-native';
 
 
-// const config = {
-//     issuer: 'https://api.imgur.com',
-//     clientId: 'fc7cb1f5f86d0ef',
-//     clientSecret: '3c08f63cbc54b6dae4b2ff05144e38ccc9a1aeb4',
-//     redirectUrl: 'epicture.arthurdassier.com',
-//     scopes: [],
-//     serviceConfiguration: {
-//         authorizationEndpoint: 'https://api.imgur.com/oauth2/authorize',
-//         tokenEndpoint: 'https://api.imgur.com/oauth2/token'
-//     }
-// };
-
-// const onButtonPress = async() => {
-//     try {
-//         const result = await authorize(config);
-//         // result includes accessToken, accessTokenExpirationDate and refreshToken
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
+function getUrlVars(url) {
+    var vars = {};
+    var parts = url.replace(/[#&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
 
 
-
-// https://api.imgur.com/oauth2/authorize?client_id=${apiInfo.clientID}&response_type=token
-
-// create a component
 class LoginButton extends Component {
     constructor (props) {
         super(props);
         this.state = { showWebView: false };
     }
+
+    _onNavigationStateChange = async ( webViewState ) => {
+        if ( webViewState.url.startsWith( 'https://api.imgur.com/oauth2/epicture.arthurdassier.com' ) ) {
+            global.access_token = getUrlVars(webViewState.url)['access_token']
+            global.username = getUrlVars(webViewState.url)['account_username']
+            this.props.func();
+        }
+    }
+
     render() {
         if (this.state.showWebView) {
             return (
                 <View style={ { flex: 1 } }>
                     <WebView source={ { uri: 'https://api.imgur.com/oauth2/authorize?client_id=fc7cb1f5f86d0ef&response_type=token' } }
-                    style={{marginTop: 22, width: 500, height: 100 }} />
+                    style={{marginTop: 22, width: 500, height: 100 }} 
+                    onNavigationStateChange={ this._onNavigationStateChange.bind( this )}/>
                 </View>
             )
         }
@@ -54,7 +45,7 @@ class LoginButton extends Component {
     }
 }
 
-// define your styles
+
 const styles = StyleSheet.create({
         container: {
         padding: 20,
@@ -84,5 +75,4 @@ const styles = StyleSheet.create({
    
 });
 
-//make this component available to the app
 export default LoginButton;

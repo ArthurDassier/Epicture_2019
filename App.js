@@ -6,12 +6,12 @@ import {
   View
 } from 'react-native';
 
-import Login from './Components/Login';
+import Home from './Components/Home';
 
 export default class DemoLogin extends Component {
   render() {
     return (
-     <Login />
+     <Home />
     );
   }
 }
