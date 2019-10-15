@@ -32,7 +32,7 @@ class Profile extends Component {
                     data={this.state.data}
                     keyExtractor={item => item.id}
                     renderItem={({ item }) => (
-                            <Preview name={item.name} link={item.link}/>
+                            <Preview name={item.account_id} link={item.link}/>
                 )}/>
             </View>
         );
