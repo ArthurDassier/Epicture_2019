@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet,KeyboardAvoidingView } from 'react-native';
 import LoginButton from './LoginButton';
-import Profile from './Profile';
+import Switch from './AppContainer';
 
 
 class Home extends Component {
@@ -27,7 +27,7 @@ class Home extends Component {
             );
         }
         return (
-            <Profile/>
+            <Switch/>
         )
     }
 }
