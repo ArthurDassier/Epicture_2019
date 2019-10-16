@@ -10,24 +10,36 @@ class Profile extends Component {
         super(props);
         this.state = {data: [],
                         isClicked:false,
+                        deleted:false,
                         name:'init',
                         link:'init',
                     hash:'init'};
     }
 
-    componentDidMount(){
-        return fetch(`https://api.imgur.com/3/account/${global.username}/images/0`, {
+    getProfileImage = () => {
+        fetch(`https://api.imgur.com/3/account/${global.username}/images/0`, {
         headers: {
             "Authorization": `Bearer ${global.access_token}`
           }})
             .then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson);
-                this.setState({data: responseJson.data});
+                this.setState({data: responseJson.data,
+                               deleted:false});
             }).catch((error) => {
                 console.error(error);
             });
     }
+
+    componentDidMount() {
+        this.getProfileImage()
+    }
+
+    componentDidUpdate() {
+        if (this.state.deleted)
+            this.getProfileImage()
+    }
+
 
     findRightElem = (Name, Link, Id, Hash) => {
         for (i = 0; i < this.state.data.length; i++) {
@@ -51,7 +63,8 @@ class Profile extends Component {
           }).catch((error) => {
               console.error(error);
           });
-        this.setState({isClicked: false})
+        this.setState({isClicked: false,
+                        deleted:true})
     }
 
     render() {
