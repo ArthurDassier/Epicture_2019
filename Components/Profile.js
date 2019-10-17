@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
 
 import Preview from './Preview.js';
-import ToolBar from './ToolBar.js';
 
 class Profile extends Component {
 
@@ -33,10 +32,7 @@ class Profile extends Component {
                     data={this.state.data}
                     keyExtractor={item => item.id}
                     renderItem={({ item }) => (
-                            <View>
-                                <Preview name={item.name} link={item.link}/>
-                                <ToolBar/>
-                            </View>
+                        <Preview name={item.name} link={item.link}/>
                 )}/>
             </View>
         );
@@ -46,7 +42,7 @@ class Profile extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#2c3e50',
+        // backgroundColor: '#2c3e50',
         alignItems: 'center',
     },
 });
