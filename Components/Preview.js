@@ -12,7 +12,7 @@ class Preview extends Component {
     render() {
         return (
             <View>
-              <TouchableOpacity style={styles.buttonContainer}>
+              <TouchableOpacity style={styles.buttonContainer} onPress={() => this.props.clicked(this.props.name, this.props.link, this.props.id, this.props.deletehash)}>
                     <Text style={styles.buttonText}>{this.props.name}</Text>
                     <Image style={{width: 250, height: 200}} source={{uri:this.props.link}}></Image>
                     <TouchableOpacity style={styles.toolBarStyle}>

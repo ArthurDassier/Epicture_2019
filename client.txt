@@ -1,7 +1,16 @@
 Client ID:
 fc7cb1f5f86d0ef
+
+9d69c30d883a293
+
+016acf99f029bc3
+
 Client secret:
 3c08f63cbc54b6dae4b2ff05144e38ccc9a1aeb4
+
+00783df62d952379a085cdcf6dff5f449d8079b6
+
+19ec4f72151e93ef50747a33ef5966af5849752b
 
 Rtoken:
 09fedbe0099a443a9edb6395f6e82e040eed38fd

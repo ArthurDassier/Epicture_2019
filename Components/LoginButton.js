@@ -29,7 +29,7 @@ class LoginButton extends Component {
         if (this.state.showWebView) {
             return (
                 <View style={ { flex: 1 } }>
-                    <WebView source={ { uri: 'https://api.imgur.com/oauth2/authorize?client_id=fc7cb1f5f86d0ef&response_type=token' } }
+                    <WebView source={ { uri: 'https://api.imgur.com/oauth2/authorize?client_id=016acf99f029bc3&response_type=token' } }
                     style={{marginTop: 22, width: 500, height: 100 }} 
                     onNavigationStateChange={ this._onNavigationStateChange.bind( this )}/>
                 </View>
