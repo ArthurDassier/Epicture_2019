@@ -36,10 +36,11 @@ class Home extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        alignItems: 'center',
         backgroundColor: '#2c3e50',
     },
     BtContainer:{
-        backgroundColor: '#2c3e50',
+        // backgroundColor: '#2c3e50',
         flex:1,
         alignItems: 'center',
         flexGrow: 1,

@@ -28,13 +28,21 @@ const TabNavigator = createBottomTabNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions: {
-      tabBarIcon: ({ tintColor }) => <Icon name={'home'} size={22} color={'black'} />
+      tabBarIcon: ({ tintColor }) => <Icon name={'home'} size={22} color={tintColor}/>
     }
   },
   Profile: {
     screen: ProfileScreen,
     navigationOptions: {
-      tabBarIcon: ({ tintColor }) => <Icon name={'user'} size={22} color={'black'} />
+      tabBarIcon: ({ tintColor }) => <Icon name={'user'} size={22} color={tintColor} />
+    }
+  }
+}, {
+  tabBarOptions: {
+    activeTintColor: 'blue',
+    inactiveTintColor: 'grey',
+    style: {
+      backgroundColor:'white'
     }
   }
 });
