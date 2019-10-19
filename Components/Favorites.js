@@ -92,7 +92,7 @@ class Favorite extends Component {
                         refreshing={this.state.isFetching}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => (
-                                <Preview name={item.name} link={item.link} id={item.id} hash={item.deletehash} isFav={item.favorite} views={item.views} clicked={this.findRightElem}/>
+                                <Preview name={item.title} link={item.link} id={item.id} hash={item.deletehash} isFav={item.favorite} views={item.views} clicked={this.findRightElem}/>
                     )}/>
                 </View>
             )
