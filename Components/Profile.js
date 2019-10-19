@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, Image, FlatList } from 'react-native';
 
 import Preview from './Preview.js';
 import Descript from './Descript';
@@ -9,27 +9,43 @@ class Profile extends Component {
     constructor(props){
         super(props);
         this.state = {data: [],
-                        isClicked:false,
-                        deleted:false,
+            isClicked:false,
+            deleted:false,
                         name:'init',
                         link:'init',
-                    hash:'init',
+                        avatar:'init',
+                        hash:'init',
                     views:'init',
                     favorite:false,
                     isFetching: false};
-    }
+                }
 
+
+    getAvatar = () => {
+        fetch(`https://api.imgur.com/3/account/${global.username}/avatar`, {
+        headers: {
+            "Authorization": `Bearer ${global.access_token}`
+            }})
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson.data.avatar)
+                this.setState({avatar:responseJson.data.avatar})
+            }).catch((error) => {
+                console.error(error);
+            });
+    }
+    
     getProfileImage = () => {
         fetch(`https://api.imgur.com/3/account/${global.username}/images/0`, {
         headers: {
             "Authorization": `Bearer ${global.access_token}`
-          }})
+        }})
             .then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson);
                 this.setState({data: responseJson.data,
-                               deleted:false,
-                               isFetching: false});
+                            deleted:false,
+                            isFetching: false});
             }).catch((error) => {
                 console.error(error);
             });
@@ -37,6 +53,7 @@ class Profile extends Component {
 
     componentDidMount() {
         this.getProfileImage()
+        this.getAvatar()
     }
 
     componentDidUpdate() {
@@ -78,13 +95,14 @@ class Profile extends Component {
     }
 
     onRefresh() {
-       this.setState({ isFetching: true }, function() { this.getProfileImage() });
+       this.setState({ isFetching: true }, function() { this.getProfileImage()});
     }
 
     render() {
         if (this.state.isClicked == false) {
             return (
                 <View style={styles.container}>
+                    <Image style={{width: 290, height: 200}} source={{uri:this.state.avatar}}></Image>
                     <FlatList
                         showsHorizontalScrollIndicator={false}
                         data={this.state.data}
