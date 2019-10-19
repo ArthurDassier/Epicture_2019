@@ -24,6 +24,10 @@ class Profile extends Component {
             });
     }
 
+    myClick = (Name, Link, Id, Favorite, Views) => {
+
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -33,7 +37,9 @@ class Profile extends Component {
                     keyExtractor={item => item.id}
                     renderItem={({ item }) => {
                         if (item.link.includes(".gif") || item.link.includes(".jpg") || item.link.includes(".png")) {
-                            return <Preview name={item.title} link={item.link}/>
+                            return <Preview name={item.title} link={item.link} id={item.id} favorite={item.favorite} views={item.views} clicked={this.myClick}/>
+                        } else if (item.images[0].link.includes(".gif") || item.images[0].link.includes(".jpg") || item.images[0].link.includes(".png")){
+                            return <Preview name={item.title} link={item.images[0].link} id={item.images[0].id} favorite={item.images[0].favorite} views={item.images[0].views} clicked={this.myClick}/>
                         }
                     }}/>
             </View>
@@ -45,7 +51,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        // backgroundColor: '#2c3e50',
+        backgroundColor: '#2c3e50',
     },
 });
 

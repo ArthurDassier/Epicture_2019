@@ -14,6 +14,7 @@ class Profile extends Component {
                         name:'init',
                         link:'init',
                     hash:'init',
+                    views:'init',
                     favorite:false};
     }
 
@@ -42,14 +43,15 @@ class Profile extends Component {
     }
 
 
-    findRightElem = (Name, Link, Id, Favorite) => {
+    findRightElem = (Name, Link, Id, Favorite, Views) => {
         for (i = 0; i < this.state.data.length; i++) {
             if (Id == this.state.data[i].id) {
                 this.setState({isClicked: true,
                             name:Name,
                             link:Link,
                             hash:Id,
-                            favorite:Favorite})
+                            favorite:Favorite,
+                            views:Views})
             }
         }
     }
@@ -82,13 +84,13 @@ class Profile extends Component {
                         data={this.state.data}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => (
-                                <Preview name={item.name} link={item.link} id={item.id} hash={item.deletehash} isFav={item.favorite} clicked={this.findRightElem}/>
+                                <Preview name={item.name} link={item.link} id={item.id} hash={item.deletehash} isFav={item.favorite} views={item.views} clicked={this.findRightElem}/>
                     )}/>
                 </View>
             )
         }
         return (
-            <Descript name={this.state.name} link={this.state.link} id={this.state.hash} deleted={this.Deleted} isFav={this.state.favorite} clicked={this.goBack}/>
+            <Descript name={this.state.name} link={this.state.link} id={this.state.hash} deleted={this.Deleted} isFav={this.state.favorite} views={this.state.views} clicked={this.goBack}/>
         )
     }
 }
@@ -96,7 +98,7 @@ class Profile extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // backgroundColor: '#2c3e50',
+        backgroundColor: '#2c3e50',
         alignItems: 'center',
     },
 });

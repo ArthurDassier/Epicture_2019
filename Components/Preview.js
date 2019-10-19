@@ -26,17 +26,19 @@ class Preview extends Component {
 
     render() {
         return (
-            <View>
-              <TouchableOpacity style={styles.buttonContainer} onPress={() => this.props.clicked(this.props.name, this.props.link, this.props.id, this.props.favorite)}>
+            <View style={{marginTop: 20}}>
+              <TouchableOpacity style={styles.buttonContainer} onPress={() => this.props.clicked(this.props.name, this.props.link, this.props.id, this.props.favorite, this.props.views)}>
                     <Text style={styles.buttonText}>{this.props.name}</Text>
-                    <Image style={{width: 250, height: 200}} source={{uri:this.props.link}}></Image>
+                    <Image style={{width: 300, height: 200}} source={{uri:this.props.link}}></Image>
                     <TouchableOpacity style={styles.toolBarStyle}>
                         <Icon name={'staro'} size={22} color={'white'} onPress={this.favMe}/>
-                        <Icon name={'arrowdown'} size={22} color={'white'} onPress={() => console.log('dislike')}/>
-                        <Icon name={'mail'} size={22} color={'white'} onPress={() => console.log('message')}/>
-                        <Icon name={'eye'} size={22} color={'white'} onPress={() => console.log('vue')}/>
+                        <Icon name={'message1'} size={22} color={'white'} onPress={() => console.log('message')}/>
+                        <TouchableOpacity style={styles.viewStyle}>
+                            <Text style={{color: 'white'}}>{this.props.views}</Text>
+                            <Icon name={'eye'} size={22} color={'white'}/>
+                        </TouchableOpacity>
                     </TouchableOpacity>
-                </TouchableOpacity> 
+                </TouchableOpacity>
             </View>
         );
     }
@@ -48,9 +50,9 @@ container: {
     padding: 20,
 },
 buttonContainer:{
-    width: 250,
+    width: 300,
     height: 275,
-    top: 30,
+    top: 10,
     
 },
 buttonText:{
@@ -74,6 +76,9 @@ toolBarStyle: {
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     backgroundColor: '#1e90ff'
+},
+viewStyle: {
+    flexDirection: 'row',
 }
 
 });
