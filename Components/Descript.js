@@ -62,7 +62,7 @@ buttonDelete:{
     height: 75,
 },
 ImageName:{
-    color: 'black',
+    color: 'white',
     textAlign: 'center',
 },
 image:{

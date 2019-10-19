@@ -4,7 +4,7 @@ import { View, StyleSheet, FlatList } from 'react-native';
 import Preview from './Preview.js';
 import Descript from './Descript';
 
-class Profile extends Component {
+class Favorite extends Component {
 
     constructor(props){
         super(props);
@@ -19,7 +19,7 @@ class Profile extends Component {
                     isFetching: false};
     }
 
-    getProfileImage = () => {
+    getFavoriteImage = () => {
         fetch(`https://api.imgur.com/3/account/${global.username}/favorites`, {
         headers: {
             "Authorization": `Bearer ${global.access_token}`
@@ -36,12 +36,12 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        this.getProfileImage()
+        this.getFavoriteImage()
     }
 
     componentDidUpdate() {
         if (this.state.deleted)
-            this.getProfileImage()
+            this.getFavoriteImage()
     }
 
 
@@ -78,7 +78,7 @@ class Profile extends Component {
     }
 
     onRefresh() {
-       this.setState({ isFetching: true }, function() { this.getProfileImage() });
+       this.setState({ isFetching: true }, function() { this.getFavoriteImage() });
     }
 
     render() {
@@ -111,4 +111,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Profile;
+export default Favorite;
