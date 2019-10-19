@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, WebView, TouchableOpacity, StyleSheet, AsyncStorage} from 'react-native';
+import { View, Text, WebView, TouchableOpacity, StyleSheet} from 'react-native';
 
 
 function getUrlVars(url) {

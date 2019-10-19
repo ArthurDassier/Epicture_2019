@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-
 import Icon from 'react-native-vector-icons/AntDesign'
 
 class Descript extends Component {
@@ -29,7 +26,7 @@ class Descript extends Component {
     render() {
         return (
             <View>
-                <Icon name={'arrowleft'} size={56} color={'black'} onPress={() => this.props.navigation.navigate('Profile')}/>
+                <Icon name={'arrowleft'} size={56} color={'black'} onPress={() => this.props.clicked()}/>
                 <Text style={styles.buttonText}>{this.props.name}</Text>
                 <Image style={{width: 150, height: 150}} source={{uri:this.props.link}}></Image>
                 <Icon name={'arrowup'} size={22} color={'white'}/>

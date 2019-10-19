@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 
 import Preview from './Preview.js';
 import Descript from './Descript';
@@ -54,6 +54,10 @@ class Profile extends Component {
         }
     }
 
+    goBack = () => {
+        this.setState({isClicked: false})
+    }
+
     Deleted = () => {
         fetch(`https://api.imgur.com/3/image/${this.state.hash}`, {
         method: 'DELETE',
@@ -84,7 +88,7 @@ class Profile extends Component {
             )
         }
         return (
-            <Descript name={this.state.name} link={this.state.link} id={this.state.hash} deleted={this.Deleted} isFav={this.state.favorite}/>
+            <Descript name={this.state.name} link={this.state.link} id={this.state.hash} deleted={this.Deleted} isFav={this.state.favorite} clicked={this.goBack}/>
         )
     }
 }

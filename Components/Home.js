@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet,KeyboardAvoidingView } from 'react-native';
+import { View, Image, StyleSheet,KeyboardAvoidingView } from 'react-native';
+
 import LoginButton from './LoginButton';
 import Switch from './AppContainer';
 
