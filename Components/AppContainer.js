@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/AntDesign'
 
 import Profile from './Profile';
 import General from './General';
+import Favorite from './Favorites';
 
 class HomeScreen extends React.Component {
   render() {
@@ -24,6 +25,14 @@ class ProfileScreen extends React.Component {
   }
 }
 
+class FavoriteScreen extends React.Component {
+  render() {
+    return (
+        <Favorite/>
+    );
+  }
+}
+
 const TabNavigator = createBottomTabNavigator({
   Home: {
     screen: HomeScreen,
@@ -36,13 +45,19 @@ const TabNavigator = createBottomTabNavigator({
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => <Icon name={'user'} size={22} color={tintColor} />
     }
+  },
+  Favorite: {
+    screen: FavoriteScreen,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => <Icon name={'staro'} size={22} color={tintColor} />
+    }
   }
 }, {
   tabBarOptions: {
-    activeTintColor: 'blue',
-    inactiveTintColor: 'grey',
+    activeTintColor: 'white',
+    inactiveTintColor: '#061234',
     style: {
-      backgroundColor:'white'
+      backgroundColor:'#1bb76e'
     }
   }
 });

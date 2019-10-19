@@ -20,7 +20,7 @@ class Profile extends Component {
     }
 
     getProfileImage = () => {
-        fetch(`https://api.imgur.com/3/account/${global.username}/images/0`, {
+        fetch(`https://api.imgur.com/3/account/${global.username}/favorites`, {
         headers: {
             "Authorization": `Bearer ${global.access_token}`
           }})
