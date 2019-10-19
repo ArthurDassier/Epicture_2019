@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Image, FlatList } from 'react-native';
+import { View, StyleSheet, Image, FlatList, Text } from 'react-native';
 
 import Preview from './Preview.js';
 import Descript from './Descript';
@@ -102,7 +102,10 @@ class Profile extends Component {
         if (this.state.isClicked == false) {
             return (
                 <View style={styles.container}>
-                    <Image style={{width: 290, height: 200}} source={{uri:this.state.avatar}}></Image>
+                    <View style={{flexDirection: 'row', width:300, justifyContent: 'space-between'}}>
+                        <Image style={styles.avatarStyle} source={{uri:this.state.avatar}}></Image>
+                        <Text style={{color: 'white', marginTop: 50, fontSize: 20, fontStyle: 'italic'}}>{global.username}</Text>
+                    </View>
                     <FlatList
                         showsHorizontalScrollIndicator={false}
                         data={this.state.data}
@@ -127,6 +130,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#061234',
         alignItems: 'center',
     },
+    avatarStyle: {
+        marginTop: 30,
+        width: 100,
+        height: 100,
+        borderRadius: 100 / 2
+    }
 });
 
 export default Profile;
