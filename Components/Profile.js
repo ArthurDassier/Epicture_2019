@@ -60,11 +60,11 @@ class Profile extends Component {
           }}).then((response) => response.json())
           .then((responseJson) => {
               console.log(responseJson);
+              this.setState({isClicked: false,
+                              deleted:true})
           }).catch((error) => {
               console.error(error);
-          });
-        this.setState({isClicked: false,
-                        deleted:true})
+        });
     }
 
     render() {

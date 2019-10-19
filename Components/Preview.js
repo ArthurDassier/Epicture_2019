@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 import Icon from 'react-native-vector-icons/AntDesign'
 
+
 class Preview extends Component {
 
     constructor (props) {

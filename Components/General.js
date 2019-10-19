@@ -31,9 +31,11 @@ class Profile extends Component {
                     showsHorizontalScrollIndicator={false}
                     data={this.state.data}
                     keyExtractor={item => item.id}
-                    renderItem={({ item }) => (
-                            <Preview name={item.account_id} link={item.link}/>
-                )}/>
+                    renderItem={({ item }) => {
+                        if (item.link.includes(".gif") || item.link.includes(".jpg") || item.link.includes(".png")) {
+                            return <Preview name={item.title} link={item.link}/>
+                        }
+                    }}/>
             </View>
         );
     }
