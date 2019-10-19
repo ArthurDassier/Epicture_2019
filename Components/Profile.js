@@ -13,7 +13,8 @@ class Profile extends Component {
                         deleted:false,
                         name:'init',
                         link:'init',
-                    hash:'init'};
+                    hash:'init',
+                    favorite:false};
     }
 
     getProfileImage = () => {
@@ -41,13 +42,14 @@ class Profile extends Component {
     }
 
 
-    findRightElem = (Name, Link, Id, Hash) => {
+    findRightElem = (Name, Link, Id, Favorite) => {
         for (i = 0; i < this.state.data.length; i++) {
             if (Id == this.state.data[i].id) {
                 this.setState({isClicked: true,
                             name:Name,
                             link:Link,
-                            hash:Id})
+                            hash:Id,
+                            favorite:Favorite})
             }
         }
     }
@@ -76,13 +78,13 @@ class Profile extends Component {
                         data={this.state.data}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => (
-                                <Preview name={item.name} link={item.link} id={item.id} hash={item.deletehash} clicked={this.findRightElem}/>
+                                <Preview name={item.name} link={item.link} id={item.id} hash={item.deletehash} isFav={item.favorite} clicked={this.findRightElem}/>
                     )}/>
                 </View>
             )
         }
         return (
-            <Descript name={this.state.name} link={this.state.link} deleted={this.Deleted}/>
+            <Descript name={this.state.name} link={this.state.link} id={this.state.hash} deleted={this.Deleted} isFav={this.state.favorite}/>
         )
     }
 }

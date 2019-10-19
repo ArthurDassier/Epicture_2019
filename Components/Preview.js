@@ -10,14 +10,28 @@ class Preview extends Component {
         super(props);
     }
 
+    favMe = () => {
+        fetch(`https://api.imgur.com/3/image/${this.props.id}/favorite`, {
+        method: 'POST',
+        headers: {
+            "Authorization": `Bearer ${global.access_token}`
+          }})
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log('Favorite');
+            }).catch((error) => {
+                console.error(error);
+            });
+    }
+
     render() {
         return (
             <View>
-              <TouchableOpacity style={styles.buttonContainer} onPress={() => this.props.clicked(this.props.name, this.props.link, this.props.id, this.props.deletehash)}>
+              <TouchableOpacity style={styles.buttonContainer} onPress={() => this.props.clicked(this.props.name, this.props.link, this.props.id, this.props.favorite)}>
                     <Text style={styles.buttonText}>{this.props.name}</Text>
                     <Image style={{width: 250, height: 200}} source={{uri:this.props.link}}></Image>
                     <TouchableOpacity style={styles.toolBarStyle}>
-                        <Icon name={'arrowup'} size={22} color={'white'} onPress={() => console.log('like')}/>
+                        <Icon name={'staro'} size={22} color={'white'} onPress={this.favMe}/>
                         <Icon name={'arrowdown'} size={22} color={'white'} onPress={() => console.log('dislike')}/>
                         <Icon name={'mail'} size={22} color={'white'} onPress={() => console.log('message')}/>
                         <Icon name={'eye'} size={22} color={'white'} onPress={() => console.log('vue')}/>
