@@ -25,15 +25,24 @@ class Descript extends Component {
 
     render() {
         return (
-            <View>
-                <Icon name={'arrowleft'} size={56} color={'black'} onPress={() => this.props.clicked()}/>
-                <Text style={styles.buttonText}>{this.props.name}</Text>
-                <Image style={{width: 150, height: 150}} source={{uri:this.props.link}}></Image>
-                <Icon name={'arrowup'} size={22} color={'white'}/>
-                <TouchableOpacity style={styles.buttonContainer} onPress={() => this.props.deleted()}>
-                    <Icon name={'staro'} size={50} color={'white'} onPress={this.favMe}/>
-                    <Icon name={'delete'} size={50} color={'white'}/>
-                </TouchableOpacity>
+            <View style={{backgroundColor: '#061234', flex:1}}>
+                <View >
+                    <TouchableOpacity style={styles.buttonFave} onPress={() => this.props.clicked()}>
+                        <Icon name={'arrowleft'} size={40} color={'white'} style={{marginTop:20}}/>
+                    </TouchableOpacity>
+                    <View style={{alignItems: 'center'}}>
+                        <Text style={styles.ImageName}>{this.props.name}</Text>
+                        <Image style={styles.image} source={{uri:this.props.link}}></Image>
+                    </View>
+                </View>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between', width:420}}>
+                    <TouchableOpacity style={styles.buttonFave} onPress={this.favMe}>
+                        <Icon name={'staro'} size={50} color={'white'}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonDelete} onPress={() => this.props.deleted()}>
+                        <Icon name={'delete'} size={50} color={'white'}/>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -41,20 +50,27 @@ class Descript extends Component {
 
 
 const styles = StyleSheet.create({
-container: {
-    padding: 20,
-},
-buttonContainer:{
-    backgroundColor: '#708090',
-    width: 200,
-    height: 200,
-    top: 30
-},
-buttonText:{
-    color: '#fff',
+buttonFave:{
     textAlign: 'center',
-    fontWeight: '700'
-}, 
+    width: 75,
+    height: 75,
+    marginLeft:10
+},
+buttonDelete:{
+    textAlign: 'center',
+    width: 75,
+    height: 75,
+},
+ImageName:{
+    color: 'white',
+    textAlign: 'center',
+},
+image:{
+    width: 400,
+    height: 350,
+    borderColor: 'black',
+    borderWidth: 1
+},
 loginButton:{
     backgroundColor: '#2980b6',
     color: '#fff'
