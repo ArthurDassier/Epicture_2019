@@ -17,7 +17,7 @@ You have 3 parts:
 
 ## Install / Module
 
-You must install expo-gli and yarn.
+You must install expo-gli and yarn (use command : $nmp intall).
 
 ### Code structure
 
