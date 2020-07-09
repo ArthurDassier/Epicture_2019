@@ -2,7 +2,7 @@
 
 ## How to use it
 
-Go in the repo and use npm start or yarn start in order to execute the program.
+Go in the repo and use npm start or yarn start to execute the program.
 Use Expo on your phone and scanne the QRcode. If it's doesn't work, go on the
 pageweb and turn it on the tunnel mode (that will take more time but it will 
 work).
